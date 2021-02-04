@@ -1,15 +1,19 @@
 .header {
   height: 6.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
   .wrap {
     height: 100%;
     display: flex;
     // position: relative;
+    width: 90%;
+    padding: 0;
+    margin: 0 auto;
     .logo {
       width: 15%;
       height: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
     }
     .callToActions {
@@ -25,15 +29,22 @@
       li {
         margin: 0;
         padding: 0;
+        height: 100%;
       }
       li {
         list-style-type: none;
+        display: inline-block;
+
+        margin: 0 0.8rem;
         a {
           font-size: 1.8rem;
           line-height: 1;
           color: black;
           text-transform: uppercase;
           text-decoration: none;
+          height: 100%;
+          display: flex;
+          align-items: center;
         }
       }
     }
