@@ -1,10 +1,10 @@
-.signin {
+.signup {
   width: 100%;
   max-width: 40rem;
   margin: 5% auto;
   display: block;
   border: 1px solid #ccc;
-  box-shadow: 0 0 4px 4px #ddd;
+  box-shadow: 0 4px 4px 4px #ddd;
   border-radius: 8px;
   background-color: white;
   .wrap {
@@ -19,9 +19,6 @@
     }
     .formWrap {
       margin: 5rem auto 0;
-    }
-    .socialSignin {
-      margin: 30px auto 0;
     }
   }
 }
