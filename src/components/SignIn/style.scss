@@ -1,27 +1,13 @@
-.signin {
-  width: 100%;
-  max-width: 40rem;
-  margin: 5% auto;
-  display: block;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 4px 4px #ddd;
-  border-radius: 8px;
-  background-color: white;
-  .wrap {
-    padding: 10px;
-    h2 {
-      color: #555;
-      font-size: 2.2rem;
-      text-align: center;
-      font-weight: 400;
-      text-transform: uppercase;
-      margin: 1rem 0;
-    }
-    .formWrap {
-      margin: 5rem auto 0;
-    }
-    .socialSignin {
-      margin: 30px auto 0;
-    }
+.formWrap {
+  margin: 5rem auto 0;
+}
+.socialSignin {
+  margin: 30px auto 0;
+}
+.forgotpassword {
+  a {
+    color: black;
+    font-size: 1.5rem;
+    line-height: 1;
   }
 }
