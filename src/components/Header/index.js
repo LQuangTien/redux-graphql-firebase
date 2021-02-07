@@ -18,6 +18,9 @@ const Header = (props) => {
           {!currentUser && (
             <ul>
               <li>
+                <Link to="/dashboard">dashboard</Link>
+              </li>
+              <li>
                 <Link to="/registration">Register</Link>
               </li>
               <li>
@@ -27,6 +30,9 @@ const Header = (props) => {
           )}
           {currentUser && (
             <ul>
+              <li>
+                <Link to="/dashboard">dashboard</Link>
+              </li>
               <li>
                 <span onClick={() => auth.signOut()}>Logout</span>
               </li>
