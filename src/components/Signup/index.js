@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { auth, handleUserProfile } from '../../firebase/utils';
+import { resetStateUser, signUpUser } from '../../redux/User/user.actions';
 import AuthWrapper from '../AuthWrapper';
 import Button from '../Forms/Button';
 import Input from '../Forms/Input';
 import './style.scss';
-
+const mapState = ({ user }) => ({
+  signUpSuccess: user.signUpSuccess,
+  signUpError: user.signUpError
+});
 const Signup = (props) => {
+  const dispatch = useDispatch();
+  const { signUpError, signUpSuccess } = useSelector(mapState);
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  useEffect(() => {
+    if (signUpSuccess) {
+      resetForm();
+      dispatch(resetStateUser());
+      props.history.push('/');
+    }
+  }, [signUpSuccess]);
+  useEffect(() => {
+    if (Array.isArray(signUpError) && signUpError.length > 0) {
+      setErrors(signUpError);
+    }
+  }, [signUpError]);
   const resetForm = () => {
     setDisplayName('');
     setEmail('');
@@ -19,27 +37,9 @@ const Signup = (props) => {
     setConfirmPassword('');
     setErrors([]);
   };
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      const err = ['Password not match'];
-      setErrors(err);
-      return;
-    }
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await handleUserProfile(user, { displayName });
-      resetForm();
-      props.history.push('/');
-    } catch (error) {
-      this.setState({
-        errors: [error.message]
-      });
-    }
+    dispatch(signUpUser({ displayName, email, password, confirmPassword }));
   };
 
   return (
